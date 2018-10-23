@@ -37,7 +37,7 @@ class BurgerBuilder extends React.Component{
 
     };
 
-    orderContinueHendler = () => {
+    orderContinueHandler = () => {
 
         alert("Continue");
 
@@ -103,7 +103,8 @@ class BurgerBuilder extends React.Component{
                     <OrderSummary
                         ingredients={this.state.ingredients}
                         cancelButtonClickHandler={this.backdropClickHandler}
-                        okButtonClickHandler={this.orderContinueHendler}
+                        okButtonClickHandler={this.orderContinueHandler}
+                        price={this.state.totalPrice.toFixed(2)}
                     />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />

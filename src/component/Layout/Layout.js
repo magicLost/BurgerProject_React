@@ -1,29 +1,37 @@
 import React from 'react';
 import classes from './Layout.module.css';
+import Toolbar from "../Navigation/Toolbar/Toolbar";
+import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
-const layout = ({ children }) => {
+class Layout extends React.Component {
 
-        /*if(children.length === undefined){
+        state = {
+            showSideDrawer: true
+        };
 
-           if(children.type.name === "BurgerBuilder"){
+        sideDrawerCloseHandler = () => {
 
-               console.log(children.type.name);
-               //chidren.props.prush();
-           }
+            this.setState({showSideDrawer: false});
 
-        }else{
+        };
 
-            console.log(children[0]);
-        }*/
+        menuButtonClickHandler = () => {
 
-        return (
-            <>
-                <div>Toolbar, SideDrawer, Backdrop</div>
-                <main className={classes.Content}>
-                    {children}
-                </main>
-            </>
-        )
-};
+            this.setState({showSideDrawer: true});
 
-export default layout;
+        };
+
+       render(){
+           return (
+               <>
+                   <SideDrawer isShowBackDrop={this.state.showSideDrawer} closed={this.sideDrawerCloseHandler} />
+                   <Toolbar menuButtonClickHandler={this.menuButtonClickHandler} />
+                   <main className={classes.Content}>
+                       {this.props.children}
+                   </main>
+               </>
+           )
+       }
+}
+
+export default Layout;

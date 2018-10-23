@@ -2,7 +2,7 @@ import React from 'react';
 import Button from "../../UI/Button/Button";
 //import classes from './OrderSummary.module.css';
 
-const orderSummary = ({ingredients, cancelButtonClickHandler, okButtonClickHandler}) => {
+const orderSummary = ({ingredients, cancelButtonClickHandler, okButtonClickHandler, price}) => {
 
     const ingredientSummary = Object.keys(ingredients).map(igKey => {
 
@@ -19,6 +19,7 @@ const orderSummary = ({ingredients, cancelButtonClickHandler, okButtonClickHandl
             <ul>
                 {ingredientSummary}
             </ul>
+            <p><strong>Total price: {price}</strong></p>
             <p>Continue to checkout?</p>
             <Button
                 btnType={"Danger"} clickHandler={cancelButtonClickHandler}
